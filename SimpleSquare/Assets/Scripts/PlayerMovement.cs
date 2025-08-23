@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D playerFeelCollider;
 
     Vector2 playerInput;
+    private bool isFacingRight = true;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Run();
+        Flip();
     }
 
     void OnMove(InputValue input)
@@ -31,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Run()
     {
+        if(playerInput.x != 0)
+        {
+            playerAnim.SetBool("isRunning", true);
+        }
+        else
+        {
+            playerAnim.SetBool("isRunning", false);
+        }
         playerRb.linearVelocity = new Vector2(playerInput.x * moveSpeed, playerRb.linearVelocity.y);
     }
 
@@ -42,5 +52,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerRb.linearVelocity += new Vector2(0f, jumpSpeed);
+    }
+
+    void Flip()
+    {
+
+        if (playerRb.linearVelocity.x < 0 && isFacingRight == true)
+        {
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            isFacingRight = false;
+        }
+        else if (playerRb.linearVelocity.x > 0 && isFacingRight == false)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            isFacingRight = true;
+        }
+
     }
 }
