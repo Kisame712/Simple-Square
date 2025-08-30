@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            playerAnim.SetTrigger("jump");
             playerRb.linearVelocity += new Vector2(0f, jumpSpeed);
         }
     }
@@ -121,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        playerAnim.SetTrigger("jump");
         playerRb.linearVelocity = new Vector2(-playerInput * wallJumpForce.x, wallJumpForce.y);  
     }
 
