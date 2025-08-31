@@ -275,6 +275,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpEffect: {fileID: 3609769637149097866, guid: e7d75f9c4fded2b43bc0dd301a3b409f, type: 3}
   groundCheck: {fileID: 201257165148037733}
   moveSpeed: 8
   jumpSpeed: 15
@@ -282,6 +283,7 @@ MonoBehaviour:
   wallCheck: {fileID: 3617366279943278302}
   wallJumpDuration: 0.1
   wallJumpForce: {x: 10, y: 10}
+  jumpSound: {fileID: 8300000, guid: 576c663fc5bd0bb4aab3ed9f19678f75, type: 3}
 --- !u!95 &3866974749810395813
 Animator:
   serializedVersion: 7

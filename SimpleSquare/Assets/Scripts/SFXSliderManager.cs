@@ -18,7 +18,6 @@ public class SFXSliderManager : MonoBehaviour
 
     public void ChangeVolume()
     {
-        AudioListener.volume = musicSlider.value;
         Save();
     }
 

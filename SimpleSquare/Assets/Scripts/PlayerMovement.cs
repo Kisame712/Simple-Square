@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("LayerMasks and Effects")]
     public LayerMask groundLayer;
+    public GameObject jumpEffect;
 
     [Header("Speed Controls")]
     public Transform groundCheck;
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public float wallJumpDuration;
     public Vector2 wallJumpForce;
     private bool wallJumping;
+
+    [Header("Audio Clips")]
+    public AudioClip jumpSound;
 
     Animator playerAnim;
     Rigidbody2D playerRb;
@@ -78,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Instantiate(jumpEffect, transform.position, Quaternion.identity);
+            EffectSoundManager.Instance.PlaySoundEffect(jumpSound);
             playerAnim.SetTrigger("jump");
             playerRb.linearVelocity += new Vector2(0f, jumpSpeed);
         }
@@ -122,12 +128,15 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+     
         playerAnim.SetTrigger("jump");
         playerRb.linearVelocity = new Vector2(-playerInput * wallJumpForce.x, wallJumpForce.y);  
     }
 
     void StopWallJump()
     {
+        EffectSoundManager.Instance.PlaySoundEffect(jumpSound);
+        Instantiate(jumpEffect, transform.position, Quaternion.identity);
         wallJumping = false;
     }
 }
