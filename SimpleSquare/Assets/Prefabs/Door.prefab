@@ -433,3 +433,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4039cbc7bdebc4a922089c8e9aa597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSound: {fileID: 8300000, guid: b4087c12317d19b4c8842b7a8ae0450c, type: 3}
